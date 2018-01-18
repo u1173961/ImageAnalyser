@@ -39,8 +39,8 @@ $(document).ready( function() {
 	$(window).scroll(function() {
 	    var currX = $(document).scrollLeft();
 	    if (scrollX != currX) {
-			scrollFooter();
 			scrollX = currX;
+			scrollFooter();
 	    }
 	});
 	//show element name on hover
@@ -238,23 +238,26 @@ function resizePopUp(imgContainer, imageElement) {
 	//set position/size
 	var imgDetails = $('#imgElementDetails');
 	imgDetails.css('margin-top', (popUpStartY) + 'px');
-	var popUpWidth = ($(window).width() > $(imgContainer).width() ? $(imgContainer).width() : $(window).width());
+	var popUpWidth = $(imgContainer).width() + 2;
+	var space = $(imgContainer).width() > $(window).width() ? $(window).width() : $(imgContainer).width();
 	var mLeft = 0;
-	if (zoomMode == 0) {
-		mLeft = $(window).scrollLeft();
-		if ($(window).width() < $(imgContainer).width()) {
-			mLeft -= getPixelValueFromCSS('margin-left', $('#contents')) + 1;
-		}
-	}
 	if (popUpWidth > 1200) {
-		//limit width & centre
 		popUpWidth = 1200;
-		mLeft = Math.round(($(imgContainer).width() - popUpWidth)/2);
+	}
+	if (popUpWidth <= space + 2) {
+		mLeft = Math.round((space - popUpWidth)/2);
+	} else {
+		mLeft -= getPixelValueFromCSS('margin-left', $('#contents')) + 1;
 	}
 	imgDetails.css('width', (popUpWidth) + 'px');
 	imgDetails.css('margin-left', mLeft+'px');
+	setWrapper();
+	if ($(imgContainer).width() > space) {
+		//reset margin after width applied
+		mLeft += $(window).scrollLeft();
+		imgDetails.css('margin-left', mLeft+'px');
+	}
 	drawZoomedImage(imgContainer, width, height, startX, startY);
-	//force footer to bottom
 	setWrapper();
 }
 
@@ -344,7 +347,9 @@ function scrollFooter() {
 	if (zoomMode == 0) {
 		var footPos = 0;
 		if ($(window).width() < origWidth) {
-			footPos = $(window).scrollLeft();	
+			if ($(window).scrollLeft() + $('.footer').width() <= $('#wrapper').width()) {
+				footPos = $(window).scrollLeft();
+			}
 		}
 		$('.footer').css('margin-left', footPos+'px');
 	}

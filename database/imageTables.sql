@@ -29,16 +29,17 @@ CREATE TABLE IF NOT EXISTS `images` (
   PRIMARY KEY (`id`),
   KEY `images_user_id_foreign` (`user_id`),
   CONSTRAINT `images_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table images.images: ~5 rows (approximately)
+-- Dumping data for table images.images: ~6 rows (approximately)
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
 INSERT INTO `images` (`id`, `name`, `filePath`, `height`, `width`, `user_id`, `created_at`, `updated_at`) VALUES
 	(1, 'Sgt. Pepper Cover', 'sgt_pepper_cover.jpg', 1000, 1000, 1, '2017-12-10 13:39:20', '2017-12-10 13:39:20'),
-	(14, 'The Last Supper', 'Whka6zdlxQ4RvTt5ryAfpkVDoTiE21WV7XdpOcrX.jpeg', 2645, 5076, 1, '2018-01-06 09:33:05', '2018-01-06 09:33:05'),
+	(14, 'The Last Supper', 'Whka6zdlxQ4RvTt5ryAfpkVDoTiE21WV7XdpOcrX.jpeg', 899, 1726, 1, '2018-01-06 09:33:05', '2018-01-06 09:33:05'),
 	(40, 'Orion', 'U41haRd23NrLWdDS2GPPzojLKNB4qztuQImfmrQN.jpeg', 854, 1280, 1, '2018-01-13 13:51:20', '2018-01-13 13:51:20'),
 	(42, 'Orion (cropped)', 'P7kpukcvPGnMA01FOuboy1PCxcFMGPv0uMcQKq8N.jpeg', 852, 811, 1, '2018-01-13 15:23:07', '2018-01-13 15:23:07'),
-	(43, 'Motherboard (ASUS P5AD2-E)', '5nO6VrppKZNHUjzwvT0Ac0LhuWiOHsVMj7rD8GTE.jpeg', 866, 1024, 1, '2018-01-13 16:31:35', '2018-01-13 16:31:35');
+	(43, 'Motherboard (ASUS P5AD2-E)', '5nO6VrppKZNHUjzwvT0Ac0LhuWiOHsVMj7rD8GTE.jpeg', 866, 1024, 1, '2018-01-13 16:31:35', '2018-01-13 16:31:35'),
+	(48, 'Technology-computer-motherboard-chips-163140', 'E7VDPiTiUm52DfaKhvAx0FOfq8YC9ga3efYqJWhE.jpeg', 1440, 1920, 2, '2018-01-15 22:48:55', '2018-01-15 22:48:55');
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 
 -- Dumping structure for table images.image_elements
@@ -63,9 +64,9 @@ CREATE TABLE IF NOT EXISTS `image_elements` (
   PRIMARY KEY (`id`),
   KEY `image_elements_image_id_foreign` (`image_id`),
   CONSTRAINT `image_elements_image_id_foreign` FOREIGN KEY (`image_id`) REFERENCES `images` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=328 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=330 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table images.image_elements: ~184 rows (approximately)
+-- Dumping data for table images.image_elements: ~183 rows (approximately)
 /*!40000 ALTER TABLE `image_elements` DISABLE KEYS */;
 INSERT INTO `image_elements` (`id`, `name`, `subtitle`, `x1`, `x2`, `y1`, `y2`, `height`, `width`, `appearance`, `searchTerms`, `description`, `orientation`, `zIndex`, `image_id`, `created_at`, `updated_at`) VALUES
 	(1, 'Sri Yukteswar Giri', 'Hindu guru', 26, 85, 80, 149, 66, 59, 1, 'Sri Yukteswar Giri', '', 'leftImage', 946, 1, '2017-12-10 13:57:00', '2017-12-10 13:57:00'),
@@ -156,19 +157,19 @@ INSERT INTO `image_elements` (`id`, `name`, `subtitle`, `x1`, `x2`, `y1`, `y2`, 
 	(86, 'Garden gnome', 'in the style of 19th-century Germany', 39, 72, 745, 804, 56, 33, 1, 'Garden gnome', '', 'leftImage', 973, 1, '2017-12-10 13:57:00', '2017-12-10 13:57:00'),
 	(87, 'Baritone horn', 'low-pitched brass instrument in the saxhorn family', 156, 249, 549, 708, 156, 93, 1, 'Baritone horn', '', 'leftImage', 805, 1, '2017-12-10 13:57:00', '2017-12-10 13:57:00'),
 	(88, 'Three-stringed guitar', 'flower arrangement', 498, 806, 806, 947, 141, 308, 1, 'Three-stringed guitar', '', 'centreImage', 420, 1, '2017-12-10 13:57:00', '2017-12-10 13:57:00'),
-	(92, 'Jesus', 'Christ', 2098, 2912, 1085, 1809, 724, 814, 1, 'Jesus', NULL, 'centreImage', 414, 14, '2018-01-06 09:37:15', '2018-01-07 08:50:23'),
-	(93, 'Peter', 'Rabbit', 1548, 1726, 1237, 1447, 210, 177, 1, 'Saint Peter', NULL, 'centreImage', 961, 14, '2018-01-06 09:39:18', '2018-01-07 12:05:57'),
-	(94, 'Bartholomew', 'Apostle', 109, 807, 1089, 1874, 785, 698, 1, 'Bartholomew the Apostle', NULL, 'leftImage', 455, 14, '2018-01-07 09:34:28', '2018-01-07 12:03:01'),
-	(95, 'James Minor', 'Apostle', 774, 1006, 1118, 1436, 318, 232, 1, 'James, son of Alphaeus', NULL, 'leftImage', 925, 14, '2018-01-07 10:40:19', '2018-01-07 12:04:00'),
-	(96, 'Andrew', 'Apostle', 984, 1230, 1125, 1737, 611, 246, 1, 'Andrew the Apostle', NULL, 'leftImage', 849, 14, '2018-01-07 10:43:32', '2018-01-07 12:04:59'),
-	(97, 'Judas Iscariot', 'Backstabber', 1339, 1635, 1277, 1795, 517, 297, 1, 'Judas Iscariot', NULL, 'leftImage', 846, 14, '2018-01-07 10:45:15', '2018-01-07 10:45:15'),
-	(98, 'John/Mary', 'Apostle/\'Good Time\' Apostle', 1704, 2185, 1216, 1723, 507, 481, 1, 'John the Apostle', NULL, 'centreImage', 756, 14, '2018-01-07 11:37:08', '2018-01-12 22:51:58'),
-	(99, 'Thomas', 'Doubter', 2786, 3025, 1114, 1429, 315, 239, 1, 'Thomas the Apostle', NULL, 'centreImage', 923, 14, '2018-01-07 11:38:48', '2018-01-07 12:11:22'),
-	(100, 'James Major', 'Apostle', 2992, 3180, 1147, 1491, 344, 188, 1, 'James, son of Zebedee', NULL, 'centreImage', 934, 14, '2018-01-07 11:40:03', '2018-01-07 12:12:28'),
-	(101, 'Philip', 'Apostle', 3148, 3542, 1064, 1447, 384, 394, 1, 'Philip the Apostle', NULL, 'centreImage', 848, 14, '2018-01-07 11:41:47', '2018-01-07 12:13:58'),
-	(102, 'Matthew', 'Apostle', 3296, 4161, 1096, 1737, 640, 865, 1, 'Matthew the Apostle', NULL, 'centreImage', 449, 14, '2018-01-07 11:49:25', '2018-01-07 12:14:23'),
-	(103, 'Thaddeus', 'Apostle', 4128, 4457, 1125, 1744, 619, 329, 1, 'Thaddeus of Edessa', NULL, 'rightImage', 796, 14, '2018-01-07 11:54:20', '2018-01-07 12:15:23'),
-	(104, 'Simon', 'Zealot', 4428, 4996, 1140, 1802, 662, 568, 1, 'Simon the Zealot', NULL, 'rightImage', 625, 14, '2018-01-07 11:55:17', '2018-01-07 12:16:18'),
+	(92, 'Jesus', 'Christ', 713, 990, 369, 615, 246, 277, 1, 'Jesus', NULL, 'centreImage', 414, 14, '2018-01-06 09:37:15', '2018-01-07 08:50:23'),
+	(93, 'Peter', 'Rabbit', 526, 587, 421, 492, 71, 60, 1, 'Saint Peter', NULL, 'centreImage', 961, 14, '2018-01-06 09:39:18', '2018-01-07 12:05:57'),
+	(94, 'Bartholomew', 'Apostle', 37, 274, 370, 637, 267, 237, 1, 'Bartholomew the Apostle', NULL, 'leftImage', 455, 14, '2018-01-07 09:34:28', '2018-01-07 12:03:01'),
+	(95, 'James Minor', 'Apostle', 263, 342, 380, 488, 108, 79, 1, 'James, son of Alphaeus', NULL, 'leftImage', 925, 14, '2018-01-07 10:40:19', '2018-01-07 12:04:00'),
+	(96, 'Andrew', 'Apostle', 335, 418, 383, 591, 208, 84, 1, 'Andrew the Apostle', NULL, 'leftImage', 849, 14, '2018-01-07 10:43:32', '2018-01-07 12:04:59'),
+	(97, 'Judas Iscariot', 'Backstabber', 455, 556, 434, 610, 176, 101, 1, 'Judas Iscariot', NULL, 'leftImage', 846, 14, '2018-01-07 10:45:15', '2018-01-07 10:45:15'),
+	(98, 'John/Mary', 'Apostle/\'Good Time\' Apostle', 579, 743, 413, 586, 172, 164, 1, 'John the Apostle', NULL, 'centreImage', 756, 14, '2018-01-07 11:37:08', '2018-01-12 22:51:58'),
+	(99, 'Thomas', 'Doubter', 947, 1029, 379, 486, 107, 81, 1, 'Thomas the Apostle', NULL, 'centreImage', 923, 14, '2018-01-07 11:38:48', '2018-01-07 12:11:22'),
+	(100, 'James Major', 'Apostle', 1017, 1081, 390, 507, 117, 64, 1, 'James, son of Zebedee', NULL, 'centreImage', 934, 14, '2018-01-07 11:40:03', '2018-01-07 12:12:28'),
+	(101, 'Philip', 'Apostle', 1070, 1204, 362, 492, 131, 134, 1, 'Philip the Apostle', NULL, 'centreImage', 848, 14, '2018-01-07 11:41:47', '2018-01-07 12:13:58'),
+	(102, 'Matthew', 'Apostle', 1121, 1415, 373, 591, 218, 294, 1, 'Matthew the Apostle', NULL, 'centreImage', 449, 14, '2018-01-07 11:49:25', '2018-01-07 12:14:23'),
+	(103, 'Thaddeus', 'Apostle', 1404, 1515, 383, 593, 210, 112, 1, 'Thaddeus of Edessa', NULL, 'rightImage', 796, 14, '2018-01-07 11:54:20', '2018-01-07 12:15:23'),
+	(104, 'Simon', 'Zealot', 1506, 1699, 388, 613, 225, 193, 1, 'Simon the Zealot', NULL, 'rightImage', 625, 14, '2018-01-07 11:55:17', '2018-01-07 12:16:18'),
 	(227, 'Betelgeuse', 'shoulder', 345, 384, 271, 313, 42, 39, 1, 'Betelgeuse', NULL, 'leftImage', 978, 40, '2018-01-13 13:52:57', '2018-01-13 14:13:47'),
 	(228, 'Meissa', 'head', 453, 480, 124, 162, 38, 27, 1, 'Meissa', NULL, 'centreImage', 986, 40, '2018-01-13 13:59:52', '2018-01-13 14:13:58'),
 	(229, 'Bellatrix', 'arm', 575, 611, 187, 224, 37, 36, 1, 'Bellatrix', NULL, 'centreImage', 982, 40, '2018-01-13 14:13:24', '2018-01-13 14:13:24'),
@@ -266,13 +267,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table images.users: ~1 rows (approximately)
+-- Dumping data for table images.users: ~3 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `remember_token`, `admin`, `created_at`, `updated_at`) VALUES
-	(1, 'Admin', 'admin', 'me@here.com', '$2y$10$vA9cKf.Es/gpeBbzeQ66yOH4St5SBTOeVAQTe9wZk4engBvIR4ybe', '54lG4a5x0eiIBOn5uuKjKPdGpbaoJIW9v5yQ6Vm49DywXyAYjnffavskPIU5', 1, '2017-12-19 03:08:29', '2017-12-19 03:08:29'),
-	(2, 'User', 'user', 'user@nowhere.com', '$2y$10$vbuXTBThw61MYwLl5Rad9uyHuqOan2TkDX6vrWDGUCp2hezb0agqy', 'RIybVH7tzH924TZqkkHpyMc4CEHtPZEf7c262VlYoohwZPDB1ydpEJSMY2eR', 0, '2018-01-15 13:32:51', '2018-01-15 13:32:51');
+	(1, 'Admin', 'admin', 'me@here.com', '$2y$10$vA9cKf.Es/gpeBbzeQ66yOH4St5SBTOeVAQTe9wZk4engBvIR4ybe', '1ARHPGSMSKEx6MKwZbO0RVI3Q3pFqXcjiQO3dMbLdp9YwFQ6JmF3E4Xrqbhp', 1, '2017-12-19 03:08:29', '2017-12-19 03:08:29'),
+	(2, 'user', 'user', 'user@nowhere.com', '$2y$10$vbuXTBThw61MYwLl5Rad9uyHuqOan2TkDX6vrWDGUCp2hezb0agqy', 'WvrDsA26AadTt6lLV8SSezV153KQbyVrAgDcuiwvy1mzmLp2v6g87sk6129c', 0, '2018-01-15 13:32:51', '2018-01-15 13:32:51'),
+	(3, 'user2', 'user2', 'me@nowhere.com', '$2y$10$phXFg2oYGcuEoWV2lk9PSuw7hmL/G1nci6i8YmLLyAPF1XCC/./Ku', 'qFwEO6oh58kaEjT9WwY71ZOSDk4SXfjHBiK93oVpMgEdm3YBU2yq0xE3aZKk', 0, '2018-01-15 23:47:21', '2018-01-15 23:47:21');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
